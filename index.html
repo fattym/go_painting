@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GoPainting | Professional Painting & Construction</title>
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+  <style>
+    :root { --brand-color: #79b700ff; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: #111111dc; color: #fff; overflow-x: hidden; }
+
+    /* Navbar */
+    .navbar { transition: background-color 0.4s ease, padding 0.4s ease; }
+    .navbar-transparent { background-color: transparent !important; padding: 1rem 0; }
+    .navbar-scrolled { background-color: #111111dc !important; padding: 0.5rem 0; }
+    .navbar-brand { font-weight: bold; text-transform: uppercase; color: var(--brand-color) !important; }
+    .nav-link.active { color: var(--brand-color) !important; font-weight: bold; }
+
+    .navbar-nav .nav-link:hover { color: #0188fe !important; }
+
+    /* Carousel */
+    .carousel-item { height: 100vh; background: no-repeat center center/cover; }
+    .carousel-caption { bottom: 30%; }
+    .carousel-caption h1 { font-size: 3rem; text-transform: uppercase; letter-spacing: 2px; }
+    .overlay { position: absolute; top: 0; left: 0; height: 100%; width: 100%; background: rgba(0, 0, 0, 0.55); }
+
+    /* Brand button */
+    .btn-brand { background-color: var(--brand-color); border: none; color: #fff; transition: all 0.3s ease; }
+    .btn-brand:hover { background-color: #5e8c00; color: #fff; transform: translateY(-3px); box-shadow: 0 8px 16px rgba(0,0,0,0.3); }
+
+    /* Services */
+    /* .service-section {
+      position: relative; min-height: 100vh;
+      display: flex; align-items: center;
+      color: white;
+      background-position: center;
+      background-size: cover;
+      background-attachment: fixed;
+      margin: 0; padding: 0;
+    }
+    .service-section .overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.55); z-index: 1; }
+    .service-section .container { position: relative; z-index: 2; padding-top: 5rem; padding-bottom: 5rem; } */
+    .service-section {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      color: white;
+      background-position: center;
+      background-size: cover;
+      background-attachment: fixed;
+      overflow: hidden;
+      animation: bgParallax 20s ease-in-out infinite alternate;
+    }
+    .service-section .overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.55); z-index: 1; }
+    .service-section .container { position: relative; z-index: 2; }
+
+    /* Parallax background keyframes */
+    @keyframes bgParallax {
+      0%   { background-position: center top; background-size: 100%; }
+      50%  { background-position: center center; background-size: 105%; }
+      100% { background-position: center bottom; background-size: 110%; }
+    }
+    /* Cover overlay */
+    .cover-overlay {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      /* background: rgba(0,0,0,0.85); */
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      z-index: 5; transition: opacity 0.6s ease, visibility 0.6s ease;
+    }
+    .cover-overlay img { max-width: 60%; border-radius: 12px; margin-bottom: 20px; box-shadow: 0 8px 24px rgba(0,0,0,0.5); }
+    .cover-overlay button { background: var(--brand-color); border: none; padding: 12px 20px; color: white; font-size: 1.2rem; border-radius: 30px; cursor: pointer; }
+    .cover-overlay.hidden { opacity: 0; visibility: hidden; }
+
+    /* Content stagger */
+    .service-section .content-img, .service-section .content-text {
+      opacity: 0; transform: translateY(30px); transition: all 0.8s ease;
+    }
+    .service-section.revealed .content-img {
+      opacity: 1; transform: translateY(0); transition-delay: 0.2s;
+    }
+    .service-section.revealed .content-text {
+      opacity: 1; transform: translateY(0); transition-delay: 0.6s;
+    }
+
+    /* Diagonal wipes */
+    .content-img { position: relative; overflow: hidden; }
+    .content-img img { width: 100%; display: block; transition: transform 0.3s ease; }
+    .content-img img:hover { transform: scale(1.05); }
+
+    .wipe-left::before, .wipe-right::before {
+      content: ""; position: absolute; top: 0;
+      width: 120%; height: 100%; background: var(--brand-color);
+      transform: skewX(-20deg) translateX(0);
+      transition: transform 1s ease-in-out; z-index: 2;
+    }
+    .wipe-left::before { left: -20%; }
+    .wipe-right::before { right: -20%; }
+    .revealed .wipe-left::before { transform: skewX(-20deg) translateX(120%); }
+    .revealed .wipe-right::before { transform: skewX(-20deg) translateX(-120%); }
+
+
+
+    
+    /* Waves */
+    .service-section .wave { position: absolute; bottom: 0; left: 0; width: 100%; line-height: 0; transform: rotate(180deg); }
+    .service-section .wave svg { width: calc(150% + 1.3px); height: 100px; animation: waveMove 10s linear infinite; }
+    .service-section .wave .shape-fill { fill: url(#waveGradient); }
+    @keyframes waveMove { 0% { transform: translateX(0); } 100% { transform: translateX(-25%); } }
+
+    /* Particles floating */
+    .particles {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none; z-index: 0;
+      background-image: radial-gradient(rgba(121,183,0,0.3) 2px, transparent 3px);
+      background-size: 50px 50px;
+      animation: drift 60s linear infinite;
+    }
+    @keyframes drift {
+      from { background-position: 0 0; }
+      to { background-position: 1000px 1000px; }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .carousel-caption h1 { font-size: 2rem; }
+      .cover-overlay img { max-width: 90%; }
+      .service-section .row { text-align: center; }
+      .content-text { margin-top: 20px; }
+    }
+
+    /* Back to top */
+    #backToTop {
+      position: fixed; bottom: 30px; right: 30px;
+      background-color: var(--brand-color); color: white; border: none; border-radius: 50%;
+      padding: 12px 16px; font-size: 20px; z-index: 1000;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      opacity: 0; pointer-events: none; transition: opacity 0.4s ease;
+    }
+    #backToTop.show { opacity: 1; pointer-events: auto; }
+    .wave { position: relative; width: 100%; overflow: hidden; line-height: 0; }
+    .wave svg {
+      position: relative;
+      display: block;
+      width: calc(150% + 1.3px);
+      height: 100px;
+      animation: waveMove 10s linear infinite;
+    }
+    .wave .shape-fill { fill: var(--brand-color); }
+    .wave.flip { transform: rotate(180deg); }
+
+    @keyframes waveMove {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-25%); }
+    }
+  </style>
+</head>
+<body data-bs-spy="scroll" data-bs-target="#mainNavbar" data-bs-offset="80">
+
+  <!-- Particles -->
+  <div class="particles"></div>
+
+  <!-- Navbar -->
+  <nav id="mainNavbar" class="navbar navbar-expand-lg navbar-dark fixed-top navbar-transparent">
+    <div class="container">
+      <a class="navbar-brand" href="#home">GoPainting</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#painting">Painting</a></li>
+          <li class="nav-item"><a class="nav-link" href="#waterproofing">Waterproofing</a></li>
+          <li class="nav-item"><a class="nav-link" href="#flooring">Flooring</a></li>
+          <li class="nav-item"><a class="nav-link" href="#microcement">Microcement</a></li>
+          <li class="nav-item"><a class="nav-link" href="#effects">Special Effects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header Carousel -->
+ 
+  <header id="home">
+    <div id="headerCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        
+        <!-- Slide 1 -->
+        <div class="carousel-item active" style="background-image: url('./assets/WhatsApp\ Image\ 2025-08-24\ at\ 17.04.24.jpeg');">
+          <div class="overlay"></div>
+          <div class="carousel-caption text-center text-white">
+            <h1 class="animate__animated animate__fadeInDown">Your Construction Partner</h1>
+            <p class="animate__animated animate__fadeInUp">Professional Painting & Construction Services since 2014</p>
+            <a href="#services" class="btn btn-lg btn-brand animate__animated animate__zoomIn">Explore Services</a>
+          </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="carousel-item" style="background-image: url('./assets/counteer.jpg');">
+          <div class="overlay"></div>
+          <div class="carousel-caption text-center text-white">
+            <h1 class="animate__animated animate__fadeInDown">Microcement </h1>
+            <p class="animate__animated animate__fadeInUp">Stunning finishes for your home</p>
+            <a href="#services" class="btn btn-lg btn-brand animate__animated animate__zoomIn">Request Quote</a>
+          </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="carousel-item" style="background-image: url('./assets/s.jpg');">
+          <div class="overlay"></div>
+          <div class="carousel-caption text-center text-white">
+            <h1 class="animate__animated animate__fadeInDown">Modern Finishes</h1>
+            <p class="animate__animated animate__fadeInUp">Transforming spaces with unique designs</p>
+            <a href="#services" class="btn btn-lg btn-brand animate__animated animate__zoomIn">See More</a>
+          </div>
+        </div>
+
+      </div>
+      <!-- Controls -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#headerCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#headerCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </button>
+    </div>
+  </header>
+  <!-- Example Service (Painting) -->
+  <section id="painting" class="service-section" style="background-image: url('./assets/pain.png');">
+    <div class="overlay"></div>
+    <div class="cover-overlay" id="cover-painting">   <img style="width: 600px ; height:400px ;" src="./assets/pain.png"><button onclick="revealSection('cover-painting')">Painting</button></div>
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-6 content-img wipe-left"><img src="https://picsum.photos/500/350?house-paint" class="img-fluid rounded shadow"></div>
+        <div class="col-md-6 content-text"><h2 style="color:var(--brand-color)">Painting</h2><p>We provide professional interior and exterior painting services...</p>
+        
+            <a href="https://wa.me/+254707586837" class="btn btn-brand">Request Quote</a></div>
+      </div>
+      
+    </div>
+    
+  </section>
+  <div class="wave flip"><svg viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0V46.29c47.23,22.79,104.34,35.64,158,27,70.15-11.56,136-57,206-61,64-4,123,38,186,42s120-34,186-37,120,41,186,44,120-40,186-43V0Z" class="shape-fill"></path></svg></div>
+<!--waterproofing  -->
+
+  <section id="waterproofing" class="service-section" style="background-image: url('./assets/balcony.jpg');">
+    <div class="overlay"></div>
+    <div class="cover-overlay" id="cover-waterproofing">
+        <img style="width: 600px ; height:400px ;" src="./assets/balcony.jpg">
+        <button onclick="revealSection('cover-waterproofing')">Waterproofing</button></div>
+    <div class="container">
+      <div class="row align-items-center flex-row-reverse">
+        <div class="col-md-6 content-img wipe-right"><img src="https://picsum.photos/500/350?roof" class="img-fluid rounded shadow"></div>
+        <div class="col-md-6 content-text"><h2 style="color:var(--brand-color)">Waterproofing</h2><p>Protect your property with advanced waterproofing solutions...</p>        <a href="https://wa.me/+254707586837" class="btn btn-brand">Request Quote</a></div>
+      </div>
+    </div>
+    <div class="wave"><svg viewBox="0 0 1200 120"><use href="#wavePath"/></svg></div>
+  </section>
+
+  <!-- Flooring -->
+  <section id="flooring" class="service-section" style="background-image: url('./assets/floor.jpg');">
+    <div class="overlay"></div>
+    <div class="cover-overlay" id="cover-flooring">        <img style="width: 600px ; height:400px ;" src="./assets/floor.jpg"><button onclick="revealSection('cover-flooring')">Flooring</button></div>
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-6 content-img wipe-left"><img src="https://picsum.photos/500/350?floor" class="img-fluid rounded shadow"></div>
+        <div class="col-md-6 content-text"><h2 style="color:var(--brand-color)">Flooring</h2><p>Durable flooring options with professional installation...</p>        <a href="https://wa.me/+254707586837" class="btn btn-brand">Request Quote</a></div>
+      </div>
+    </div>
+    <div class="wave"><svg viewBox="0 0 1200 120"><use href="#wavePath"/></svg></div>
+  </section>
+  <div class="wave flip"><svg viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0V46.29c47.23,22.79,104.34,35.64,158,27,70.15-11.56,136-57,206-61,64-4,123,38,186,42s120-34,186-37,120,41,186,44,120-40,186-43V0Z" class="shape-fill"></path></svg></div>
+
+
+  <!-- Microcement -->
+  <section id="microcement" class="service-section" style="background-image: url('./assets/mksk.jpg');">
+    <div class="overlay"></div>
+    <div class="cover-overlay" id="cover-microcement">        <img style="width: 600px ; height:400px ;" src="./assets/mksk.jpg"><button onclick="revealSection('cover-microcement')">Microcement</button></div>
+    <div class="container">
+      <div class="row align-items-center flex-row-reverse">
+        <div class="col-md-6 content-img wipe-right"><img src="https://picsum.photos/500/350?cement" class="img-fluid rounded shadow"></div>
+        <div class="col-md-6 content-text"><h2 style="color:var(--brand-color)">Microcement</h2><p>Modern seamless surfaces with unique finishes...</p>        <a href="https://wa.me/+254707586837" class="btn btn-brand">Request Quote</a></div>
+      </div>
+    </div>
+    <div class="wave"><svg viewBox="0 0 1200 120"><use href="#wavePath"/></svg></div>
+  </section>
+
+  <!-- Special Effects -->
+  <section id="effects" class="service-section" style="background-image: url('./assets/fl.jpg');">
+    <div class="overlay"></div>
+    <div class="cover-overlay" id="cover-effects">  <img style="width: 600px ; height:400px ;" src="./assets/fl.jpg"><button onclick="revealSection('cover-effects')">Special Effects</button></div>
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-6 content-img wipe-left"><img src="https://picsum.photos/500/350?effect" class="img-fluid rounded shadow"></div>
+        <div class="col-md-6 content-text"><h2 style="color:var(--brand-color)">Special Effects</h2><p>Decorative finishes and textures to add personality...</p>        <a href="https://wa.me/+254707586837" class="btn btn-brand">Request Quote</a></div>
+      </div>
+    </div>
+    <div class="wave"><svg viewBox="0 0 1200 120"><use href="#wavePath"/></svg></div>
+  </section>
+
+
+  <!-- Contact -->
+  <section id="contact" class="bg-dark text-white text-center py-5">
+    <div class="container">
+      <h2 style="color:var(--brand-color)">Contact Us</h2>
+      <p class="lead">Ready to transform your space? Let’s talk!</p>
+      <p><strong>Phone:</strong> +254 707 586837</p>
+      <p><strong>Location:</strong> The Piano, Brookside Drive, Westlands</p>
+      <a href="https://wa.me/+254707586837" class="btn btn-brand">WhatsApp Us</a>
+    </div>
+  </section>
+
+  <!-- Back to Top -->
+  <button id="backToTop"><i class="bi bi-arrow-up"></i></button>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function revealSection(id) {
+      const overlay = document.getElementById(id);
+      if (overlay) {
+        overlay.classList.add('hidden');
+        overlay.closest('.service-section').classList.add('revealed');
+      }
+    }
+
+    // Reset overlays on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const overlay = entry.target.querySelector('.cover-overlay');
+          if (overlay) {
+            overlay.classList.remove('hidden');
+            entry.target.classList.remove('revealed');
+            if (window.innerWidth <= 768) {
+              setTimeout(() => {
+                overlay.classList.add('hidden');
+                entry.target.classList.add('revealed');
+              }, 3000);
+            }
+          }
+        }
+      });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('.service-section').forEach(section => observer.observe(section));
+
+    // Navbar scroll effect
+    const navbar = document.getElementById('mainNavbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) navbar.classList.replace('navbar-transparent','navbar-scrolled');
+      else navbar.classList.replace('navbar-scrolled','navbar-transparent');
+    });
+
+    // Back to top
+    const backToTopBtn = document.getElementById("backToTop");
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 200) backToTopBtn.classList.add("show");
+      else backToTopBtn.classList.remove("show");
+    });
+    backToTopBtn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+  </script>
+</body>
+</html>

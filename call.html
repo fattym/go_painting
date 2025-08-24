@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GoPainting | Professional Painting & Construction</title>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <!-- Animate.css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <!-- AOS CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <style>
+    :root {
+      --brand-color: #79b700ff;
+    }
+    html { scroll-behavior: smooth; }
+    body { position: relative; }
+    .carousel-item {
+      height: 100vh;
+      min-height: 400px;
+      background: no-repeat center center/cover;
+      position: relative;
+    }
+    .carousel-caption { bottom: 30%; z-index: 2; }
+    .carousel-caption h1 {
+      font-size: 3rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    .overlay {
+      position: absolute;
+      top: 0; left: 0;
+      height: 100%; width: 100%;
+      background: rgba(0, 0, 0, 0.55);
+      z-index: 1;
+    }
+    /* Navbar transition */
+    .navbar {
+      transition: background-color 0.4s ease, padding 0.4s ease;
+    }
+    .navbar-transparent { background-color: transparent !important; padding: 1rem 0; }
+    .navbar-scrolled { background-color: rgba(0, 0, 0, 0.9) !important; padding: 0.5rem 0; }
+    .navbar-brand { font-weight: bold; text-transform: uppercase; color: var(--brand-color) !important; }
+    .nav-link.active {
+      color: var(--brand-color) !important;
+      font-weight: bold;
+    }
+    section { padding: 100px 0; }
+    .btn-brand {
+      background-color: var(--brand-color);
+      border: none; color: #fff;
+    }
+    .btn-brand:hover { background-color: #5e8c00; color: #fff; }
+    .service-icon {
+      font-size: 3rem;
+      color: var(--brand-color);
+      margin-bottom: 15px;
+    }
+    .card {
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    .card:hover { transform: translateY(-10px); }
+    .card-img-top { border-radius: 15px 15px 0 0; height: 200px; object-fit: cover; }
+    /* Back to top button */
+    #backToTop {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      display: none;
+      background-color: var(--brand-color);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      padding: 12px 16px;
+      font-size: 20px;
+      z-index: 1000;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      transition: opacity 0.3s ease-in-out;
+    }
+    #backToTop:hover {
+      background-color: #5e8c00;
+    }
+  </style>
+</head>
+<body data-bs-spy="scroll" data-bs-target="#mainNavbar" data-bs-offset="80" tabindex="0">
+  <!-- Navbar -->
+  <nav id="mainNavbar" class="navbar navbar-expand-lg navbar-dark fixed-top navbar-transparent">
+    <div class="container">
+      <a class="navbar-brand" href="#home">GoPainting</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#painting">Painting</a></li>
+          <li class="nav-item"><a class="nav-link" href="#waterproofing">Waterproofing</a></li>
+          <li class="nav-item"><a class="nav-link" href="#flooring">Flooring</a></li>
+          <li class="nav-item"><a class="nav-link" href="#microcement">Microcement</a></li>
+          <li class="nav-item"><a class="nav-link" href="#special">Special Effects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header Carousel -->
+  <header id="home">
+    <div id="headerCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        
+        <!-- Slide 1 -->
+        <div class="carousel-item active" style="background-image: url('https://picsum.photos/1920/1080?painting');">
+          <div class="overlay"></div>
+          <div class="carousel-caption text-center text-white">
+            <h1 class="animate__animated animate__fadeInDown">Your Construction Partner</h1>
+            <p class="animate__animated animate__fadeInUp">Professional Painting & Construction Services since 2014</p>
+            <a href="#services" class="btn btn-lg btn-brand animate__animated animate__zoomIn">Explore Services</a>
+          </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="carousel-item" style="background-image: url('https://picsum.photos/1920/1080?building');">
+          <div class="overlay"></div>
+          <div class="carousel-caption text-center text-white">
+            <h1 class="animate__animated animate__fadeInDown">High Rise Expertise</h1>
+            <p class="animate__animated animate__fadeInUp">Safe and reliable painting at any height</p>
+            <a href="#services" class="btn btn-lg btn-brand animate__animated animate__zoomIn">Request Quote</a>
+          </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="carousel-item" style="background-image: url('https://picsum.photos/1920/1080?interior');">
+          <div class="overlay"></div>
+          <div class="carousel-caption text-center text-white">
+            <h1 class="animate__animated animate__fadeInDown">Modern Finishes</h1>
+            <p class="animate__animated animate__fadeInUp">Transforming spaces with unique designs</p>
+            <a href="#services" class="btn btn-lg btn-brand animate__animated animate__zoomIn">See More</a>
+          </div>
+        </div>
+
+      </div>
+      <!-- Controls -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#headerCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#headerCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Services Section -->
+  <!-- Services Sections -->
+<section id="painting" class="service-section text-white" style="background: url('https://picsum.photos/1920/1080?paint') center/cover no-repeat;">
+  <div class="overlay"></div>
+  <div class="container py-5">
+    <div class="row align-items-center">
+      <div class="col-md-6" data-aos="fade-right">
+        <img src="https://picsum.photos/500/350?house-paint" alt="Painting Service" class="img-fluid rounded shadow">
+      </div>
+      <div class="col-md-6 text-start" data-aos="fade-left">
+        <h2 style="color:var(--brand-color)">Painting</h2>
+        <p>We provide professional interior and exterior painting services for residential and commercial properties. Using premium paints and finishes, we guarantee durability, elegance, and modern designs that transform your space.</p>
+        <a href="https://wa.me/+254707586837" class="btn btn-brand">Request Quote</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="waterproofing" class="service-section text-white" style="background: url('https://picsum.photos/1920/1080?water') center/cover no-repeat;">
+  <div class="overlay"></div>
+  <div class="container py-5">
+    <div class="row align-items-center flex-row-reverse">
+      <div class="col-md-6" data-aos="fade-left">
+        <img src="https://picsum.photos/500/350?roof" alt="Waterproofing Service" class="img-fluid rounded shadow">
+      </div>
+      <div class="col-md-6 text-start" data-aos="fade-right">
+        <h2 style="color:var(--brand-color)">Waterproofing</h2>
+        <p>Protect your property with advanced waterproofing solutions. From roofs to balconies, foundations, and bathrooms, our systems ensure zero leakage and maximum durability against moisture and weather damage.</p>
+        <a href="https://wa.me/+254707586837" class="btn btn-brand">Request Quote</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="flooring" class="service-section text-white" style="background: url('https://picsum.photos/1920/1080?floor') center/cover no-repeat;">
+  <div class="overlay"></div>
+  <div class="container py-5">
+    <div class="row align-items-center">
+      <div class="col-md-6" data-aos="fade-right">
+        <img src="https://picsum.photos/500/350?tiles" alt="Flooring Service" class="img-fluid rounded shadow">
+      </div>
+      <div class="col-md-6 text-start" data-aos="fade-left">
+        <h2 style="color:var(--brand-color)">Flooring</h2>
+        <p>Our flooring solutions include epoxy, tiling, wood laminates, and vinyl finishes. We deliver long-lasting floors that combine functionality, style, and ease of maintenance for both homes and businesses.</p>
+        <a href="https://wa.me/+254707586837" class="btn btn-brand">Request Quote</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="microcement" class="service-section text-white" style="background: url('https://picsum.photos/1920/1080?cement') center/cover no-repeat;">
+  <div class="overlay"></div>
+  <div class="container py-5">
+    <div class="row align-items-center flex-row-reverse">
+      <div class="col-md-6" data-aos="fade-left">
+        <img src="https://picsum.photos/500/350?design" alt="Microcement Service" class="img-fluid rounded shadow">
+      </div>
+      <div class="col-md-6 text-start" data-aos="fade-right">
+        <h2 style="color:var(--brand-color)">Microcement</h2>
+        <p>We specialize in seamless microcement finishes for walls, floors, and countertops. Microcement offers a modern, minimalist style while being highly durable and easy to maintain.</p>
+        <a href="https://wa.me/+254707586837" class="btn btn-brand">Request Quote</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="effects" class="service-section text-white" style="background: url('https://picsum.photos/1920/1080?art') center/cover no-repeat;">
+  <div class="overlay"></div>
+  <div class="container py-5">
+    <div class="row align-items-center">
+      <div class="col-md-6" data-aos="fade-right">
+        <img src="https://picsum.photos/500/350?texture" alt="Special Effects Service" class="img-fluid rounded shadow">
+      </div>
+      <div class="col-md-6 text-start" data-aos="fade-left">
+        <h2 style="color:var(--brand-color)">Special Effects</h2>
+        <p>Add personality to your walls with murals, textured finishes, decorative plaster, and faux designs. Our artisans create custom effects that make your space truly unique.</p>
+        <a href="https://wa.me/+254707586837" class="btn btn-brand">Request Quote</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .service-section {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+  }
+  .service-section .overlay {
+    position: absolute;
+    top: 0; left: 0;
+    height: 100%; width: 100%;
+    background: rgba(0,0,0,0.6);
+    z-index: 1;
+  }
+  .service-section .container {
+    position: relative;
+    z-index: 2;
+  }
+</style>
+
+
+  <!-- Contact Section -->
+  <section id="contact" class="bg-dark text-white text-center">
+    <div class="container">
+      <i class="bi bi-telephone-fill service-icon"></i>
+      <h2 style="color:var(--brand-color)">Contact Us</h2>
+      <p class="lead">Ready to transform your space? Let’s talk!</p>
+      <p><strong>Phone:</strong> +254 707 586837</p>
+      <p><strong>Location:</strong> The Piano, Brookside Drive, Westlands</p>
+      <a href="https://wa.me/+254707586837" class="btn btn-brand">WhatsApp Us</a>
+    </div>
+  </section>
+
+  <!-- Back to Top Button -->
+  <button id="backToTop" title="Go to top">
+    <i class="bi bi-arrow-up"></i>
+  </button>
+
+  <!-- Bootstrap 5 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- AOS JS -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    // Change navbar background on scroll
+    const navbar = document.getElementById('mainNavbar');
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 50) {
+        navbar.classList.remove('navbar-transparent');
+        navbar.classList.add('navbar-scrolled');
+      } else {
+        navbar.classList.remove('navbar-scrolled');
+        navbar.classList.add('navbar-transparent');
+      }
+    });
+
+    // Init AOS
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
+
+    // Back to top button
+    const backToTopBtn = document.getElementById("backToTop");
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 200) {
+        backToTopBtn.style.display = "block";
+      } else {
+        backToTopBtn.style.display = "none";
+      }
+    });
+    backToTopBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  </script>
+</body>
+</html>
