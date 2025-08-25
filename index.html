@@ -57,7 +57,7 @@
       overflow: hidden;
       animation: bgParallax 20s ease-in-out infinite alternate;
     }
-    .service-section .overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.55); z-index: 1; }
+    .service-section .overlay { position: absolute; inset: 0; background: rgba(0, 0, 0, 0.247); z-index: 1; }
     .service-section .container { position: relative; z-index: 2; }
 
     /* Parallax background keyframes */
@@ -92,7 +92,7 @@
     /* Cover overlay */
     .cover-overlay {
       position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0,0,0,0.85);
+      background: rgba(0, 0, 0, 0.048);
       display: flex; flex-direction: column; align-items: center; justify-content: center;
       z-index: 5; transition: opacity 0.6s ease, visibility 0.6s ease;
     }
@@ -350,12 +350,11 @@
   <!-- Example Service (Painting) -->
   <section id="painting" class="service-section" style="background-image: url('./assets/pain.png');">
     <div class="overlay"></div>
-    
 
-    <div class="cover-overlay" id="cover-painting">   <img style="width: 600px ; height:400px ;" src="./assets/pain.jpg"><button onclick="revealSection('cover-painting')">Painting</button></div>
+    <div class="cover-overlay" id="cover-painting"><div style="background: rgba(0, 0, 0, 0.226);border-radius: 10px;"> <h1 style="color: rgb(247, 247, 247);">PAINTING</h1></div><img style="width: 600px ; height:400px ; filter: brightness(90%);" src="./assets/int.jpeg"><button onclick="revealSection('cover-painting')">More</button></div>
     <div class="container">
       <div class="row align-items-center">
-        <div class="col-md-6 content-img wipe-left"><img style="width: 500px ; height:350px ;"src="./assets/t.jpg" class="img-fluid rounded shadow"></div>
+        <div class="col-md-6 content-img wipe-left"><img style="width: 500px ; height:350px ; " src="./assets/all.jpg" class="img-fluid rounded shadow"></div>
         <div class="col-md-6 content-text " style="background-color: #2c2d2e93;"><h2 style="color:var(--brand-color)">Painting</h2><p>We provide professional interior and exterior painting services...</p>
         <ul style="list-style: none; padding: 0; margin-top: 20px; " >
           <li>
@@ -389,15 +388,39 @@
   <div class="wave flip"><svg viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0V46.29c47.23,22.79,104.34,35.64,158,27,70.15-11.56,136-57,206-61,64-4,123,38,186,42s120-34,186-37,120,41,186,44,120-40,186-43V0Z" class="shape-fill"></path></svg></div>
 <!--waterproofing  -->
 
-  <section id="waterproofing" class="service-section" style="background-image: url('./assets/swmmgin\ \(Copy\).jpg');">
+  <section id="waterproofing" class="service-section" style="background-image: url('./assets/aftr.jpg');">
     <div class="overlay"></div>
-    <div class="cover-overlay" id="cover-waterproofing">
+    <div class="cover-overlay" id="cover-waterproofing"><div style="background: rgba(0, 0, 0, 0.226);border-radius: 10px;"> <h1 style="color: rgb(247, 247, 247);">WATERPROOFING</h1></div>
         <img style="width: 600px ; height:400px ;" src="./assets/balcony.jpg">
-        <button onclick="revealSection('cover-waterproofing')">Waterproofing</button></div>
+        <button onclick="revealSection('cover-waterproofing')">More</button></div>
     <div class="container">
       <div class="row align-items-center flex-row-reverse">
-        <div class="col-md-6 content-img wipe-right"><img src="https://picsum.photos/500/350?roof" class="img-fluid rounded shadow"></div>
-        <div class="col-md-6 content-text"><h2 style="color:var(--brand-color)">Waterproofing</h2><p>Protect your property with advanced waterproofing solutions...</p>        <a href="https://wa.me/+254707586837" class="btn btn-brand">Request Quote</a></div>
+        <div class="col-md-6 content-img wipe-right"><img style="width: 500px ; height:350px ; " src="./assets/swmmgin (Copy).jpg" class="img-fluid rounded shadow"></div>
+        <div class="col-md-6 content-text"style="background-color: #2c2d2e93;"><h2 style="color:var(--brand-color)">Waterproofing</h2><p>Protect your property with advanced waterproofing solutions...</p>     
+         <ul style="list-style: none; padding: 0; margin-top: 20px;">
+          <li>
+            <i class="bi bi-droplet-fill" style="color: var(--brand-color); margin-right: 6px;"></i>
+            <strong style="color: #0188fe;">Roof Waterproofing:</strong> Keep your roof leak-free with our expert waterproofing services.
+          </li>
+          <li>
+            <i class="bi bi-droplet-fill" style="color: var(--brand-color); margin-right: 6px;"></i>
+            <strong style="color: #0188fe;">Basement Waterproofing:</strong> Prevent water damage in your basement with our reliable solutions.
+          </li>
+          <li>
+            <i class="bi bi-droplet-fill" style="color: var(--brand-color
+); margin-right: 6px;"></i>
+            <strong style="color: #0188fe;">Bathroom Waterproofing:</strong> Ensure your bathroom stays dry and mold-free.
+          </li>
+          <li>
+            <i class="bi bi-droplet-fill" style="color: var(--brand-color); margin-right: 6px;"></i>
+            <strong style="color: #0188fe;">Balcony & Terrace Waterproofing:</strong> Protect outdoor spaces from water damage.
+          </li>
+          <li>
+          </ul>
+        <p>
+  <a href="./water.html" class="btn btn-brand">More Details</a> or
+
+            <a href="https://wa.me/+254707586837" class="btn btn-brand">Request Quote</a> </p></div>
       </div>
     </div>
     <div class="wave"><svg viewBox="0 0 1200 120"><use href="#wavePath"/></svg></div>
@@ -406,26 +429,75 @@
   <!-- Flooring -->
   <section id="flooring" class="service-section" style="background-image: url('./assets/kitechen.jpg');">
     <div class="overlay"></div>
-    <div class="cover-overlay" id="cover-flooring">        <img style="width: 600px ; height:400px ;" src="./assets/floor.jpg"><button onclick="revealSection('cover-flooring')">Flooring</button></div>
+    <div class="cover-overlay" id="cover-flooring"> <div style="background: rgba(0, 0, 0, 0.226);border-radius: 10px;"> <h1 style="color: rgb(247, 247, 247);">FLOORING</h1></div>       <img style="width: 600px ; height:400px ;" src="./assets/floor.jpg"><button onclick="revealSection('cover-flooring')">Flooring</button></div>
     <div class="container">
       <div class="row align-items-center">
-        <div class="col-md-6 content-img wipe-left"><img src="https://picsum.photos/500/350?floor" class="img-fluid rounded shadow"></div>
-        <div class="col-md-6 content-text"><h2 style="color:var(--brand-color)">Flooring</h2><p>Durable flooring options with professional installation...</p>        <a href="https://wa.me/+254707586837" class="btn btn-brand">Request Quote</a></div>
+        <div class="col-md-6 content-img wipe-left"><img  style="width: 500px ; height:350px ;" src="./assets/wood.jpg" class="img-fluid rounded shadow"></div>
+        <div class="col-md-6 content-text" style="background-color: #2c2d2e93;"><h2 style="color:var(--brand-color)">Flooring</h2><p>Durable flooring options with professional installation...</p>    
+          <ul style="list-style: none; padding: 0; margin-top: 20px;">
+          <li>
+            <i class="bi bi-grid-fill" style="color: var(--brand-color); margin-right: 6px;"></i>
+            <strong style="color: #0188fe;">Tile Flooring:</strong> Wide selection of tiles with expert installation.
+          </li>
+          <li>
+            <i class="bi bi-grid-fill" style="color: var(--brand-color); margin-right: 6px;"></i>
+            <strong style="color: #0188fe;">Laminate Flooring:</strong> Affordable and stylish laminate flooring solutions.
+          </li>
+          <li>
+            <i class="bi bi-grid-fill" style="color: var(--brand-color); margin-right: 6px;"></i>
+            <strong style="color: #0188fe;">Vinyl Flooring:</strong> Water-resistant and easy-to-clean vinyl flooring options.
+          </li> 
+          <li>
+            <i class="bi bi-grid-fill" style="color: var(--brand-color); margin-right: 6px;"></i>
+            <strong style="color: #0188fe;">Hardwood Flooring:</strong> Classic and durable hardwood flooring installations.
+          </li>
+          </ul>
+           <a href="./water.html" class="btn btn-brand">More Details</a> or
+
+            <a href="https://wa.me/+254707586837" class="btn btn-brand">Request Quote</a> </p></div>
       </div>
     </div>
     <div class="wave"><svg viewBox="0 0 1200 120"><use href="#wavePath"/></svg></div>
   </section>
-  <div class="wave flip"><svg viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0V46.29c47.23,22.79,104.34,35.64,158,27,70.15-11.56,136-57,206-61,64-4,123,38,186,42s120-34,186-37,120,41,186,44,120-40,186-43V0Z" class="shape-fill"></path></svg></div>
-
 
   <!-- Microcement -->
   <section id="microcement" class="service-section" style="background-image: url('./assets/living\ \(Copy\).jpg');">
     <div class="overlay"></div>
-    <div class="cover-overlay" id="cover-microcement">        <img style="width: 600px ; height:400px ;" src="./assets/mksk.jpg"><button onclick="revealSection('cover-microcement')">Microcement</button></div>
+    <div class="cover-overlay" id="cover-microcement">     <div style="background: rgba(0, 0, 0, 0.226);border-radius: 10px;"> <h1 style="color: rgb(247, 247, 247);">MICROCEMENT</h1></div>   <img style="width: 600px ; height:400px ;" src="./assets/mksk.jpg"><button onclick="revealSection('cover-microcement')">Microcement</button></div>
     <div class="container">
       <div class="row align-items-center flex-row-reverse">
-        <div class="col-md-6 content-img wipe-right"><img src="https://picsum.photos/500/350?cement" class="img-fluid rounded shadow"></div>
-        <div class="col-md-6 content-text"><h2 style="color:var(--brand-color)">Microcement</h2><p>Modern seamless surfaces with unique finishes...</p>        <a href="https://wa.me/+254707586837" class="btn btn-brand">Request Quote</a></div>
+        <div class="col-md-6 content-img wipe-right"><img  style="width: 500px ; height:350px ;" src="./assets/bath.jpg" class="img-fluid rounded shadow"></div>
+        <div class="col-md-6 content-text" style="background-color: #2c2d2e93;"><h2 style="color:var(--brand-color)">Microcement</h2><p>Modern seamless surfaces with unique finishes...</p>    
+          <ul style="list-style: none; padding: 0; margin-top: 20px;">
+          <li>
+            <i class="bi bi-droplet-half" style="color: var(--brand-color); margin-right: 6px;"></i>
+            <strong style="color: #0188fe;">Wall Coatings:</strong> Sleek and modern wall finishes for any room.
+          </li>
+          <li>
+            <i class="bi bi-droplet-half" style="color: var(--brand-color); margin-right: 6px;"></i>
+            <strong style="color: #0188fe;">Floor Coatings:</strong> Durable and stylish flooring solutions.
+          </li>
+          <li>
+            <i class="bi bi-droplet-half" style="color: var(--brand-color); margin-right: 6px;"></i>
+            <strong style="color: #0188fe;">Bathroom & Kitchen Surfaces:</strong> Water-resistant and easy-to-clean surfaces.   
+          </li>
+          <li>
+            <i class="bi bi-droplet-half" style="color: var(--brand-color); margin-right: 6px;"></i>
+            <strong style="color: #0188
+fe;">Custom Finishes:</strong> Tailored microcement solutions to fit your design vision.
+          </li>
+          <li>
+            <i class="bi bi-droplet-half" style="color: var(--brand-color); margin-right: 6px;"></i>
+            <strong style="color: #0188fe;">Rope Access Services:</strong> Expert rope access for hard-to-reach areas.
+          </li>
+          <li>
+            <i class="bi bi-droplet-half" style="color: var(--brand-color); margin-right: 6px;"></i>
+            <strong style="color: #0188fe;">Scaffold Services:</strong> Safe scaffolding solutions for various heights.
+          </li>
+          </ul>
+           <a href="./water.html" class="btn btn-brand">More Details</a> or
+
+            <a href="https://wa.me/+254707586837" class="btn btn-brand">Request Quote</a> </p></div>
       </div>
     </div>
     <div class="wave"><svg viewBox="0 0 1200 120"><use href="#wavePath"/></svg></div>
@@ -434,11 +506,32 @@
   <!-- Special Effects -->
   <section id="effects" class="service-section" style="background-image: url('./assets/fl.jpg');">
     <div class="overlay"></div>
-    <div class="cover-overlay" id="cover-effects">  <img style="width: 600px ; height:400px ;" src="./assets/spe.jpg"><button onclick="revealSection('cover-effects')">Special Effects</button></div>
+    <div class="cover-overlay" id="cover-effects">  <div style="background: rgba(0, 0, 0, 0.226);border-radius: 10px;"> <h1 style="color: rgb(247, 247, 247);">SPECIAL EFFECTS</h1></div><img style="width: 600px ; height:400px ;" src="./assets/spe.jpg"><button onclick="revealSection('cover-effects')">Special Effects</button></div>
     <div class="container">
       <div class="row align-items-center">
-        <div class="col-md-6 content-img wipe-left"><img src="https://picsum.photos/500/350?effect" class="img-fluid rounded shadow"></div>
-        <div class="col-md-6 content-text"><h2 style="color:var(--brand-color)">Special Effects</h2><p>Decorative finishes and textures to add personality...</p>        <a href="https://wa.me/+254707586837" class="btn btn-brand">Request Quote</a></div>
+        <div class="col-md-6 content-img wipe-left"><img  style="width: 500px ; height:350px ;" src="./assets/eff.jpg" class="img-fluid rounded shadow"></div>
+        <div class="col-md-6 content-text" style="background-color: #2c2d2e93;"><h2 style="color:var(--brand-color)">Special Effects</h2><p>Decorative finishes and textures to add personality...</p>   
+          
+          <ul style="list-style: none; padding: 0; margin-top: 20px;">
+          <li>
+            <i class="bi bi-stars" style="color: var(--brand-color); margin-right: 6px;"></i>
+            <strong style="color: #0188fe;">Textured Finishes:</strong> Add depth and character to your walls with various textures.
+          </li>
+          <li>
+            <i class="bi bi-stars" style="color: var(--brand-color); margin-right: 6px;"></i>
+            <strong style="color: #0188fe;">Metallic Finishes:</strong> Create a luxurious look with shimmering metallic paints.
+          </li>
+          <li>
+            <i class="bi bi-stars" style="color: var(--brand-color); margin-right: 6px;"></i>
+            <strong style="color: #0188fe;">Faux Finishes:</strong> Mimic the look of natural materials like wood, stone, or marble.
+          </li>
+          <li>
+            <i class="bi bi-stars" style="color: var(--brand-color); margin-right: 6px;"></i>
+            <strong style="color: #0188fe;">Murals & Custom Art:</strong> Personalized wall art to make your space truly unique.
+          </li>
+          </ul>  <a href="./water.html" class="btn btn-brand">More Details</a> or
+
+            <a href="https://wa.me/+254707586837" class="btn btn-brand">Request Quote</a> </p></div>
       </div>
     </div>
     <div class="wave"><svg viewBox="0 0 1200 120"><use href="#wavePath"/></svg></div>
@@ -446,11 +539,35 @@
 
   <section id="heights" class="service-section" style="background-image: url('./assets/high.jpg');">
     <div class="overlay"></div>
-    <div class="cover-overlay" id="cover-heights">        <img style="width: 600px ; height:400px ;" src="./assets/sahi.png"><button onclick="revealSection('cover-heights')">Heights</button></div>
+    <div class="cover-overlay" id="cover-heights">  <div style="background: rgba(0, 0, 0, 0.226);border-radius: 10px;"> <h1 style="color: rgb(247, 247, 247);">HEIGHTS</h1></div>      <img style="width: 600px ; height:400px ;" src="./assets/sahi.png"><button onclick="revealSection('cover-heights')">Heights</button></div>
     <div class="container">
       <div class="row align-items-center flex-row-reverse">
-        <div class="col-md-6 content-img wipe-right"><img src="https://picsum.photos/500/350?cement" class="img-fluid rounded shadow"></div>
-        <div class="col-md-6 content-text"><h2 style="color:var(--brand-color)">Microcement</h2><p>Modern seamless surfaces with unique finishes...</p>        <a href="https://wa.me/+254707586837" class="btn btn-brand">Request Quote</a></div>
+        <div class="col-md-6 content-img wipe-right"><img  style="width: 500px ; height:350px ;" src="./assets/high1.jpg" class="img-fluid rounded shadow"></div>
+        <div class="col-md-6 content-text" style="background-color: #2c2d2e93;"><h2 style="color:var(--brand-color)">Microcement</h2><p>Modern seamless surfaces with unique finishes...</p>      
+          <ul style="list-style: none; padding: 0; margin-top: 20px;">
+          <li>
+            <i class="bi bi-building" style="color: var(--brand-color); margin-right: 6px;"></i>
+            <strong style="color: #0188fe;">High-Rise Painting:</strong> Safe and efficient painting services for tall buildings.
+          </li>
+          <li>
+            <i class="bi bi-building" style="color: var(--brand-color); margin-right: 6px;"></i>
+            <strong style="color: #0188fe;">
+            Industrial Coatings:</strong> Durable coatings for industrial structures and facilities.
+          </li>
+          <li>
+            <i class="bi bi-building" style="color: var(--brand-color); margin-right: 6px;"></i>
+            <strong style="color: #0188fe;">
+            Rope Access Services:</strong> Expert rope access for hard-to-reach areas.
+          </li>
+          <li>
+            <i class="bi bi-building" style="color: var(--brand-color); margin-right: 6px;"></i>
+            <strong style="color: #0188fe;">
+            Scaffold Services:</strong> Safe scaffolding solutions for various heights.
+          </li>
+          </ul>
+            <a href="./water.html" class="btn btn-brand">More Details</a> or
+
+            <a href="https://wa.me/+254707586837" class="btn btn-brand">Request Quote</a> </p></div>
       </div>
     </div>
     <div class="wave"><svg viewBox="0 0 1200 120"><use href="#wavePath"/></svg></div>
